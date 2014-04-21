@@ -7,6 +7,10 @@ ImageSweep is a python script used to remove unused drawables from your applicat
 
 Where project_src_directory is the relative or absolute file-path where your source code lives. Make sure the chosen directory contains ALL of your source code / AndroidManifest.xml, but none of the libraries you've included (the script auto-determines where the /res folder is and libraries can potentially break that).
 
+##Requirements
+This script has been tested on Python 2.7 and Python 3.0.
+Works with all versions of Android.
+
 ##How It Works
 At a high level, the script scans each file and does a search for 'R.drawable.' or "@drawable/". Afterwards it checks each resource inside of drawable folders to see if it was referenced anywhere.
 
