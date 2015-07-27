@@ -28,7 +28,7 @@ def isResourceRoot(directory):
 #We only want to remove unused PICTURES (pngs)
 def addFile(fileName):
   fileName = fileName.replace("R.drawable.", "").replace("@drawable/","")
-  used_drawable_files.add(fileName + ".png")
+  used_drawable_files.add(fileName)
 
 #Check to see what resources are referenced in this function.
 def checkFileForResources(fileAsString):
@@ -50,8 +50,11 @@ def checkFileForResources(fileAsString):
 
 #We only want to if it's an unreferenced PNG.
 def deleteIfUnusedPNG(directory, fileName):
-    if fileName.endswith(".png") and not fileName.endswith(".9.png"):
-      if fileName not in used_drawable_files:
+    if fileName.endswith(".png"):
+      fileNameWithoutExt = os.path.splitext(fileName)[0]
+      if fileName.endswith(".9.png"):
+        fileNameWithoutExt = os.path.splitext(fileNameWithoutExt)[0]
+      if fileNameWithoutExt not in used_drawable_files:
         global files_deleted
         global mega_bytes_deleted
 
